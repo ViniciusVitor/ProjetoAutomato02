@@ -1,3 +1,6 @@
+/*
+{W|W contem a cadeia aba ou um númerpo par de a's}
+ */
 package projetoautomato02;
 
 import java.util.Scanner;
@@ -8,8 +11,7 @@ import java.util.Scanner;
  */
 public class ProjetoAutomato02 {
 
-    char cadeia[];
-    int contador;
+    char cadeia[];   
     int contaA;    
     boolean resposta;
 
@@ -19,35 +21,39 @@ public class ProjetoAutomato02 {
         Scanner input = new Scanner(System.in);
         System.out.println("Coloque sua cadeia: ");
         subCadeia = input.nextLine();
+        subCadeia = subCadeia.toLowerCase();
         auto.cadeia = subCadeia.toCharArray();
 
         if (subCadeia.equals("aba")) {
             auto.CadeiaAceita();
 
-        } else {
+        } else if(subCadeia.equals("")){
+            auto.CadeiaAceita();
+        }else {
             auto.Automato();
         }
     }
 
     public void Automato() {
-        ProjetoAutomato02 auto = new ProjetoAutomato02();
-        contador = 0;
+        ProjetoAutomato02 auto = new ProjetoAutomato02();       
         contaA = 0;
 
        
         for (int i = 0; i < cadeia.length; i++) {
             if (cadeia[i] == 'a') {
                 contaA++;
-                resposta = true;
+                resposta = true;                
                 
             } else if (cadeia[i] == 'b') {
                 resposta = true;
-            } else {
+                
+            } else {                          
                 resposta = false;
                 break;
+                
             }
         }
-        if (resposta = true & contaA % 2 == 0) {
+        if (resposta == true && contaA % 2 == 0) {
             auto.CadeiaAceita();
         }else{
             auto.CadeiaNaoAceita();
